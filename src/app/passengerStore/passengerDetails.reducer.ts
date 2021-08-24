@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { State } from '../common/passengerDetails';
+import { State } from '../sharedData/passengerDetails';
 import {
   resetPassengerDetails,
   setPassengerDetails

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IPassengerDetails } from '../common/passengerDetails';
+import { IPassengerDetails } from '../sharedData/passengerDetails';
 
 export const SET_PASSENGER_DETAILS = '[passenger details page] set details';
 export const RESET_PASSENGER_DETAILS = '[passenger details page] reset details';

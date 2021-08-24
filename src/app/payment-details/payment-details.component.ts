@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { IPaymentDetails } from '../common/paymentDetails';
+import { IPaymentDetails } from '../sharedData/paymentDetails';
 import { PassengerSummaryService } from '../passenger-summary.service';
 import { resetPassengerDetails } from '../passengerStore/passenger-details.actions';
-import { resetPaymentDetails, setPaymentDetails } from '../paymentStore/paymentDetails.actions';
+import {
+  resetPaymentDetails,
+  setPaymentDetails
+} from '../paymentStore/paymentDetails.actions';
 
 @Component({
   selector: 'app-payment-details',

@@ -3,12 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { IPassengerDetails } from '../common/passengerDetails';
+
 import { PassengerSummaryService } from '../passenger-summary.service';
 import {
   resetPassengerDetails,
   setPassengerDetails
 } from '../passengerStore/passenger-details.actions';
+import { IPassengerDetails } from '../sharedData/passengerDetails';
 
 @Component({
   selector: 'app-passenger-details',
