@@ -1,0 +1,5 @@
+/* Add application styles & imports to this file! */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.container {
+  background-color: rgba(197, 220, 247, 0.616);
+}

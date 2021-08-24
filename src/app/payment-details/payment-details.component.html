@@ -1,0 +1,63 @@
+<div>
+  <app-summary></app-summary>
+</div>
+
+<div class="container">
+  <em><h1>Payment Details Form</h1></em>
+  <hr>
+  <form (ngSubmit)="Continue()" [formGroup]="paymentDetails">
+
+    <div class="form-group row mb-2">
+      <label class="col-md-2 col-form-label" for="cardNumberId">Credit Card Number :</label>
+      <div class="col-md-8">
+        <input type="number" id="cardNumber" formControlName="cardNumber" class="form-control" placeholder="Credit Card Number"  [ngClass]="{'is-invalid':(paymentDetails.get('cardNumber').dirty && !paymentDetails.get('cardNumber').valid)}" />
+        <span class="invalid-feedback">
+      <span *ngIf="paymentDetails.get('cardNumber').errors?.required">
+      Please enter your credit card number.
+      </span>
+        <span *ngIf="paymentDetails.get('cardNumber').errors?.pattern">
+        Card Number must be 16 digits.
+      </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group row mb-2">
+      <label class="col-md-2 col-form-label" for="expirationDateId">Expiration Date :</label>
+      <div class="col-md-8">
+        <input type="text" id="expirationDate" formControlName="expirationDate" class="form-control" placeholder="MM/YY" [ngClass]="{'is-invalid': (paymentDetails.get('expirationDate').dirty && !paymentDetails.get('expirationDate').valid)}"/>
+        <span class="invalid-feedback">
+        <span *ngIf="paymentDetails.get('expirationDate').errors?.required">
+        Please enter card expiration date.
+        </span>
+        <span *ngIf="paymentDetails.get('expirationDate').errors?.pattern">
+        Please enter correct date format.
+        </span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group row mb-2">
+      <label class="col-md-2 col-form-label" for="cvaId">CVA :</label>
+      <div class="col-md-8">
+        <input type="number" id="cva" formControlName="cva" class="form-control" placeholder="CVA" [ngClass]="{'is-invalid': (paymentDetails.get('cva').dirty && !paymentDetails.get('cva').valid)}"/>
+        <span class="invalid-feedback">
+        <span *ngIf="paymentDetails.get('cva').errors?.required">
+        Please enter CVA.
+        </span>
+        <span *ngIf="paymentDetails.get('cva').errors?.pattern">
+        CVA must be 3 digits.
+        </span>
+        </span>
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary" type="submit" (click)="continue(paymentDetails.value)"[disabled]="!paymentDetails.valid">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" type="submit" (click)="reset()"[disabled]="!paymentDetails.valid">Reset</button>
+
+    <button class="btn btn-primary" id="button" [routerLink]="['']" style="float:right" type="submit">Go Back</button>
+
+
+
+  </form>
+</div>

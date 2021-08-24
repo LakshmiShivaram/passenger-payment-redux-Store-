@@ -1,0 +1,97 @@
+<div class="container">
+  <em><h1>Passenger Details Form</h1></em>
+  <hr>
+
+  <form [formGroup]="passengerDetail">
+
+    <div class="form-group row mb-2">
+      <label class="col-md-2 col-form-label" for="lastNameId">Last Name :</label>
+      <div class="col-md-8">
+        <input type="text" id="lastName"  formControlName="lastName" class="form-control" placeholder="Last name" [ngClass]="{'is-invalid':(passengerDetail.get('lastName').dirty && 
+        !passengerDetail.get('lastName').valid)}" />
+        <span class="invalid-feedback">
+        <span *ngIf="passengerDetail.get('lastName').errors?.required">
+          Please enter your last name.
+        </span>
+        <span *ngIf="passengerDetail.get('lastName').errors?.maxlength">
+          The last name should be less than 10 characters.
+        </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group row mb-2">
+      <label class="col-md-2 col-form-label" for="firstNameId">First Name :</label>
+      <div class="col-md-8">
+        <input type="text" id="firstName"  formControlName="firstName" class="form-control" placeholder="First name"
+        [ngClass]="{'is-invalid': (
+        passengerDetail.get('firstName').dirty) &&
+        !passengerDetail.get('firstName').valid }"  />
+
+        <span class="invalid-feedback">
+      <span *ngIf="passengerDetail.get('firstName').errors?.required">
+        Please enter your first name.
+      </span>
+        <span *ngIf="passengerDetail.get('firstName').errors?.maxlength">
+        The first name should be less than 12 characters.
+      </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group row mb-2">
+      <label class="col-md-2 col-form-label" for="firstNameId">Address :</label>
+      <div class="col-md-8">
+        <input type="text" id="address" formControlName="address" placeholder="Address" class="form-control"[ngClass]="{'is-invalid':(passengerDetail.get('address').dirty && !passengerDetail.get('address').valid)}"/>
+        <span class ="invalid-feedback">
+          <span *ngIf="passengerDetail.get('address').errors?.required">
+              Please enter your address.
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group row mb-2">
+      <label class="col-md-2 col-form-label" for="firstNameId">Email :</label>
+      <div class="col-md-8">
+        <input type="email" id="email" placeholder="Email"  formControlName="email"
+          class="form-control" [ngClass]="{'is-invalid':(passengerDetail.get('email').dirty && !passengerDetail.get('email').valid)}"/>
+        <span class="invalid-feedback">
+          <span *ngIf="passengerDetail.get('email').errors?.required">
+            Please enter your email
+          </span>
+        <span *ngIf="passengerDetail.get('email').errors?.email">
+            Please enter valid email!
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group row mb-2">
+      <label class="col-md-2 col-form-label" for="firstNameId">Phone :</label>
+      <div class="col-md-8">
+        <input type="number" placeholder="Phone Number" id="phone" formControlName="phone" class="form-control" [ngClass]="{'is-invalid':(passengerDetail.get('phone').dirty && !passengerDetail.get('phone').valid)}"/>
+        <span class="invalid-feedback">
+        <span *ngIf="passengerDetail.get('phone').errors?.required">
+            Please enter your Phone Number
+        </span>
+        <span *ngIf="passengerDetail.get('phone').errors?.pattern">
+            Phone number should be in between 8 to 12 Digits.
+        </span>
+        </span>
+      </div>
+    </div>
+    <br>
+
+    <button class="btn btn-primary"  title="Save Form" (click)="save(passengerDetail.value)" [disabled]="!passengerDetail.valid">Save Form</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary"  title="Reset Form" (click)="reset()" [disabled]="!passengerDetail.valid">Reset</button>
+    <button class="btn btn-primary"  (click)="continue(passengerDetail.value)" style="float:right" type="submit"
+
+    [disabled]="!passengerDetail.valid">Continue</button>
+
+  </form>
+</div>
+<br>
+<div>
+  <app-summary [summary]="passengerDetail.value"></app-summary>
+</div>
